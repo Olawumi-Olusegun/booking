@@ -17,7 +17,7 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
     if(!accessToken) {
         return res.status(401).json({ message: "Unauthorized"});
     }
-    
+
     try {
 
         const decoded = jwt.verify(accessToken, process.env.JWT_SECRET_KEY as string) as {userId: string};
@@ -33,8 +33,8 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
         next();
 
     } catch (error) {
+        console.log(error)
         return res.status(401).json({ message: "Unauthorized"});
     }
-
 
 }

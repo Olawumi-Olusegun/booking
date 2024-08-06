@@ -66,7 +66,28 @@ export const validateToken = async () => {
     const responseBody = await response.json();
 
     if(!response.ok) {
-        throw new Error(responseBody.message)
+        throw new Error(responseBody.message);
     }
 
+    return responseBody;
+}
+
+
+export const addMyHotel = async (hotelFormData: FormData) => {
+    const response = await fetch(`${config.BASE_URL}/my-hotels`, {
+        method: "POST",
+        credentials: "include",
+        body: hotelFormData,
+    });
+
+
+    const responseBody = await response.json();
+
+    console.log(responseBody)
+
+    if(!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody;
 }

@@ -23,7 +23,7 @@ const Toast = ({message, type, onClose}: ToastProps) => {
   return (
     <div className={styles}>
         <div className="flex justify-center items-center">
-            <span className="text-sm ">{message}</span>
+            <span className="text-sm">{message}</span>
         </div>
     </div>
   )

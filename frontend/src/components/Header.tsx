@@ -18,7 +18,7 @@ const Header = () => {
                     ? (
                         <div className="flex items-center space-x-3">
                             <Link to={""} className=" text-white">My Bookings</Link>
-                            <Link to={""} className=" text-white">My Hotels</Link>
+                            <Link to={"/add-hotel"} className=" text-white">My Hotels</Link>
                             <SignOutButton />                            
                         </div>
                     )
