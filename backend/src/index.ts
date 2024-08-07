@@ -5,7 +5,8 @@ import path from "path"
 import "dotenv/config";
 import { dbConnection } from "./config/database";
 import userRoutes from "./routes/user.route";
-import hotelRoutes from "./routes/my-hotels.route";
+import myhotelRoutes from "./routes/my-hotels.route";
+import hotelsRoutes from "./routes/hotels.route";
 
 const PORT = Number(process.env.PORT || 5150);
 
@@ -25,7 +26,8 @@ app.use(express.static(path.join(__dirname, "./../../frontend/dist")))
 
 
 app.use("/api/v1/auth", userRoutes);
-app.use("/api/v1/my-hotels", hotelRoutes);
+app.use("/api/v1/my-hotels", myhotelRoutes);
+app.use("/api/v1/hotels", hotelsRoutes);
 
 
 app.get("*", (req:Request, res: Response) => {

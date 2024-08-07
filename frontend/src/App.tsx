@@ -7,6 +7,7 @@ import AuthLayout from "./layouts/AuthLayout"
 import AddHotels from "./pages/AddHotels"
 import MyHotels from "./pages/MyHotels"
 import EditHotel from "./pages/EditHotel"
+import Search from "./pages/Search"
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/my-hotels" element={<MyHotels />} />
             <Route path="/add-hotel" element={<AddHotels />} />
             <Route path="/edit-hotel/:hotelId" element={<EditHotel />} />
+            <Route path="/search" element={<Search />} />
           </Route>
 
           <Route path="*" element={<Navigate to={"/"} />} />

@@ -1,10 +1,13 @@
 import Hero from "../components/Hero"
+import SearchBar from "../components/SearchBar"
 
 const Home = () => {
   return (
     <>
         <Hero />
-        <h2>HomePage</h2>
+        <div className="w-full">
+          <SearchBar />
+        </div>
     </>
   )
 }

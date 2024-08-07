@@ -1,5 +1,5 @@
 import express from "express";
-import multer from "multer"
+import multer from "multer";
 import { getAllMyHotels, getHotelById, myHotels, updateHotelById } from "../controllers/my-hotels.controller";
 import { verifyToken } from "../middlewares/auth";
 import { body } from "express-validator";
@@ -11,9 +11,9 @@ const storage = multer.memoryStorage();
 const upload = multer({
     storage,
     limits: {
-        fileSize: 5 * 1024 * 1024 // 5MB 
+        fileSize: 5 * 1024 * 1024 // 5MB
     }
-})
+});
 
 router.route("/")
       .post(verifyToken,

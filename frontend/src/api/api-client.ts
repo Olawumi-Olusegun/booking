@@ -1,7 +1,21 @@
 import { config } from "../constants";
 import { SignInFormData } from "../pages/Signin";
 import { SignUpFormData } from "../pages/Signup";
-import { HotelType } from "../types";
+import { HotelSearchResponse, HotelType } from "../types";
+
+export type SearchParams = {
+    destination?: string;
+    checkIn?: string;
+    checkOut?: string;
+    adultCount?: string;
+    childCount?: string;
+    page?: string;
+    facilities?: string[];
+    types?: string[];
+    stars?: string[];
+    maxPrice?: string;
+    sortOption?: string;
+}
 
 export const signup = async (formData: SignUpFormData) => {
     const response = await fetch(`${config.BASE_URL}/auth/sign-up`, {
@@ -137,4 +151,40 @@ export const updateMyHotelById = async (hotelFormData: FormData): Promise<HotelT
     }
 
     return responseBody.hotel;
+}
+
+export const searchHotels = async (searchParams: SearchParams): Promise<HotelSearchResponse> => {
+    
+    const queryParams = new URLSearchParams();
+
+    queryParams.append("destination", searchParams.destination || "");
+    queryParams.append("checkIn", searchParams.checkIn || "");
+    queryParams.append("checkOut", searchParams.checkOut || "");
+    queryParams.append("adultCount", searchParams.adultCount || "");
+    queryParams.append("childCount", searchParams.childCount || "");
+    queryParams.append("page", searchParams.page || "");
+
+    queryParams.append("maxPrice", searchParams.maxPrice || "");
+    queryParams.append("sortOption", searchParams.sortOption || "");
+    
+    searchParams.facilities?.forEach((facility) => queryParams.append("facilities", facility));
+
+    searchParams.types?.forEach((type) => queryParams.append("types", type));
+
+    searchParams.stars?.forEach((star) => queryParams.append("stars", star));
+
+    const response = await fetch(`${config.BASE_URL}/hotels/search?${queryParams}`, {
+        method: "GET",
+        credentials: "include",
+    });
+
+    const responseBody = await response.json();
+
+    console.log({responseBody})
+
+    if(!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody;
 }
