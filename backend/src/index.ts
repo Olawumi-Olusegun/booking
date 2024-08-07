@@ -24,12 +24,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, "./../../frontend/dist")))
 
 
-app.get("/api/v1/test", async (req: Request, res: Response) => {
-    return res.json({ message: "Hello from backend"})
-});
-
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/my-hotels", hotelRoutes);
+
+
+app.get("*", (req:Request, res: Response) => {
+    res.sendFile(path.join(__dirname, "./../../frontend/index.html"))
+});
 
 
 dbConnection()
