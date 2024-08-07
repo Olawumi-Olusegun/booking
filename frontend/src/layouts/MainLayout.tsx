@@ -6,7 +6,7 @@ const MainLayout = () => {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-dvh">
         <Header />
-            <main>
+            <main className="w-full">
                 <Outlet />
             </main>
         <Footer />

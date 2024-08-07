@@ -5,6 +5,9 @@ import FacilitiesSection from "./FacilitiesSection";
 import GuestSection from "./GuestSection";
 import ImagesSection from "./ImagesSection";
 import { Loader2 } from "lucide-react";
+import { HotelType } from "../../types";
+import { useEffect } from "react";
+import AppContainer from "../AppContainer";
 
 export type HotelFormData = {
   userId: string;
@@ -26,17 +29,26 @@ export type HotelFormData = {
 type ManageHotelFormProps = {
   onSave: (hotelFormData: FormData) => void;
   isLoading: boolean;
+  hotel?: HotelType;
 }
 
-const ManageHotelForm = ({ onSave, isLoading }: ManageHotelFormProps) => {
+const ManageHotelForm = ({ onSave, isLoading, hotel }: ManageHotelFormProps) => {
 
   const formMethods = useForm<HotelFormData>();
 
-  const { handleSubmit } = formMethods
+  const { handleSubmit, reset } = formMethods;
+
+  useEffect(() => {
+    reset(hotel);
+  }, [hotel, reset]);
 
   const handleFormSubmit = handleSubmit((formDataJson: HotelFormData) => {
 
     const formData = new FormData();
+
+    if(hotel) {
+      formData.append("hotelId", hotel._id || "");
+    }
 
     formData.append("name", formDataJson.name);
     formData.append("city", formDataJson.city);
@@ -52,6 +64,12 @@ const ManageHotelForm = ({ onSave, isLoading }: ManageHotelFormProps) => {
       formData.append(`facilities[${index}]`, facility)
     });
 
+    if(formDataJson.imageUrls) {
+      formDataJson.imageUrls.forEach((imageUrl, index) => {
+        formData.append(`imageUrls[${index}]`, imageUrl)
+      })
+    }
+
     Array.from(formDataJson.imageFiles).forEach((imageFile) => {
       formData.append(`imageFiles`, imageFile);
     });
@@ -61,25 +79,27 @@ const ManageHotelForm = ({ onSave, isLoading }: ManageHotelFormProps) => {
   });
 
   return (
-    <div className="w-full p-5 md:max-w-5xl mx-auto mb-12">
-      <FormProvider {...formMethods}>
-        <form onSubmit={handleFormSubmit} className="flex flex-col gap-8">
+    <div className="w-full  my-12">
+      <AppContainer>
+        <FormProvider {...formMethods}>
+          <form onSubmit={handleFormSubmit} className="flex flex-col gap-8">
 
-            <DetailsSection />
-            <TypeSection />
-            <FacilitiesSection />
-            <GuestSection />
-            <ImagesSection />
+              <DetailsSection />
+              <TypeSection />
+              <FacilitiesSection />
+              <GuestSection />
+              <ImagesSection />
 
-            <div className="flex items-center justify-end">
-              <button disabled={isLoading} type="submit" className="flex items-center gap-1.5 px-6 py-2 bg-blue-600 disabled:cursor-not-allowed disabled:bg-gray-500 text-white duration-300 rounded-md font-bold hover:bg-blue-500 ">
-                {isLoading && <Loader2 className="animate-spin h-4 w-4" /> }
-                <span> {isLoading ? "Saving..." : "Save"} </span>
-              </button>
-            </div>
+              <div className="flex items-center justify-end">
+                <button disabled={isLoading} type="submit" className="flex items-center gap-1.5 px-6 py-2 bg-blue-600 disabled:cursor-not-allowed disabled:bg-gray-500 text-white duration-300 rounded-md font-bold hover:bg-blue-500 ">
+                  {isLoading && <Loader2 className="animate-spin h-4 w-4" /> }
+                  <span> {isLoading ? "Saving..." : "Save"} </span>
+                </button>
+              </div>
 
-        </form>
-      </FormProvider>
+          </form>
+        </FormProvider>
+      </AppContainer>
     </div>
   )
 }

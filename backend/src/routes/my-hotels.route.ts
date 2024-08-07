@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer"
-import { myHotels } from "../controllers/my-hotels.controller";
+import { getAllMyHotels, getHotelById, myHotels, updateHotelById } from "../controllers/my-hotels.controller";
 import { verifyToken } from "../middlewares/auth";
 import { body } from "express-validator";
 
@@ -29,7 +29,11 @@ router.route("/")
             body("pricePerNight").notEmpty().isNumeric().withMessage("Price per night is required"),
             body("starRating").notEmpty().isNumeric().withMessage("Star rating is required"),
         ],
-        upload.array("imageFiles", 6), 
-        myHotels)
+        upload.array("imageFiles", 6),  myHotels)
+        .get(verifyToken, getAllMyHotels);
+
+router.route("/:hotelId")
+        .get(verifyToken, getHotelById)
+        .put(verifyToken, upload.array("imageFiles", 6), updateHotelById)
 
 export default router;

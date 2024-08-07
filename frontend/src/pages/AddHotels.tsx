@@ -9,16 +9,14 @@ const AddHotels = () => {
   const { showToast } = useAppContext();
 
   const { mutate, isLoading } = useMutation(apiClient.addMyHotel,{
-    onSuccess(data, variables, context) {
-      console.log(data, variables, context)
-      if(data) {
-        showToast({ message: "Hotel saved", type: "success" });
-      }
+    onSuccess() {
+      showToast({ message: "Hotel saved", type: "success" });
     },
     onError(error: Error) {
       showToast({ message: error.message, type: "error" });
     }
-  })
+  });
+
 
   const handleSave = (hotelFormData: FormData) => {
     mutate(hotelFormData);

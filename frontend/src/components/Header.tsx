@@ -17,7 +17,7 @@ const Header = () => {
                     isLoggedIn
                     ? (
                         <div className="flex items-center space-x-3">
-                            <Link to={""} className=" text-white">My Bookings</Link>
+                            <Link to={"/my-hotels"} className=" text-white">My Bookings</Link>
                             <Link to={"/add-hotel"} className=" text-white">My Hotels</Link>
                             <SignOutButton />                            
                         </div>
