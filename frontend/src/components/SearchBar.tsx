@@ -18,7 +18,7 @@ const SearchBar = () => {
     const [checkOut, setCheckOut] = useState<Date>(search.checkOut);
     const [adultCount, setAdultCount] = useState(search.adultCount);
     const [childCount, setChildCount] = useState(search.childCount);
-    const [hotelId, setHotelId] = useState(search.hotelId);
+    const [hotelId] = useState(search.hotelId);
 
     const minDate = new Date();
     const maxDate = new Date();

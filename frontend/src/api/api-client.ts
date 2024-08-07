@@ -180,8 +180,6 @@ export const searchHotels = async (searchParams: SearchParams): Promise<HotelSea
 
     const responseBody = await response.json();
 
-    console.log({responseBody})
-
     if(!response.ok) {
         throw new Error(responseBody.message);
     }
