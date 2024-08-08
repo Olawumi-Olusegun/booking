@@ -16,12 +16,12 @@ const SearchContext = createContext<SearchContext | undefined>(undefined);
 
 export const SearchContextProvider = ({children}: {children: React.ReactNode}) => {
 
-    const [destination, setDestination] = useState("");
-    const [checkIn, setCheckIn] = useState<Date>(new Date());
-    const [checkOut, setCheckOut] = useState<Date>(new Date());
-    const [adultCount, setAdultCount] = useState(1);
-    const [childCount, setChildCount] = useState(0);
-    const [hotelId, setHotelId] = useState("");
+    const [destination, setDestination] = useState(() => sessionStorage.getItem("destination") || "");
+    const [checkIn, setCheckIn] = useState<Date>(() => new Date(sessionStorage.getItem("checkIn") || new Date().toISOString()));
+    const [checkOut, setCheckOut] = useState<Date>(() => new Date(sessionStorage.getItem("checkOut") || new Date().toISOString()));
+    const [adultCount, setAdultCount] = useState<number>(() => parseInt(sessionStorage.getItem("adultCount") || "1"));
+    const [childCount, setChildCount] = useState<number>(() => parseInt(sessionStorage.getItem("childCount") || "0"));
+    const [hotelId, setHotelId] = useState(() => sessionStorage.getItem("destination") || "");
     
 
     const saveSearchValues = (destination: string, checkIn: Date, checkOut: Date, adultCount: number, childCount: number, hotelId?: string,) => {
@@ -32,6 +32,17 @@ export const SearchContextProvider = ({children}: {children: React.ReactNode}) =
         setChildCount(childCount);
         if(hotelId) {
             setHotelId(hotelId)
+        }
+
+        sessionStorage.setItem("destination", destination);
+        sessionStorage.setItem("checkIn", checkIn.toISOString());
+        sessionStorage.setItem("checkOut", checkOut.toISOString());
+        sessionStorage.setItem("adultCount", adultCount.toString());
+        sessionStorage.setItem("childCount", childCount.toString());
+        sessionStorage.setItem("destination", destination.toString());
+        
+        if(hotelId) {
+            sessionStorage.setItem("hotelId", hotelId.toString());
         }
     }
 

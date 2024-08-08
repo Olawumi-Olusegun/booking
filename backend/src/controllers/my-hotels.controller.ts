@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import cloudinary from "../libs/cloudinary";
-import HotelModel, { HotelType } from "../models/hotel.model";
+import HotelModel from "../models/hotel.model";
+import { HotelType } from "../types";
 
 
 async function uploadImages(imageFiles: Express.Multer.File[]) {

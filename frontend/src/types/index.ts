@@ -26,3 +26,16 @@ export type HotelSearchResponse = {
     message?: string;
     error?: string;
 }
+
+export type UserType = {
+    _id?: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+}
+
+export type PaymentIntentResponse = {
+    paymentIntentId: string;
+    clientSecret: string;
+    totalCost: number;
+}

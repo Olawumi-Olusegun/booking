@@ -86,7 +86,7 @@ const SearchBar = () => {
                 placeholderText="Check-in Date"
                 onChange={(date) => setCheckIn(date as Date)} 
                 className="min-w-full bg-white p-1 focus:outline-none"
-                wrapperClassName="min-w-w-full"
+                wrapperClassName="min-w-full"
                 />
             </div>
             <div className="flex bg-white px-2 py-1 gap-2">
@@ -97,10 +97,10 @@ const SearchBar = () => {
                 endDate={checkOut}
                 minDate={minDate}
                 maxDate={maxDate}
-                placeholderText="Check-in Date"
+                placeholderText="Check-out Date"
                 onChange={(date) => setCheckOut(date as Date)} 
                 className="min-w-full bg-white p-1 focus:outline-none"
-                 wrapperClassName="min-w-w-full"
+                 wrapperClassName="min-w-full"
                 />
             </div>
 

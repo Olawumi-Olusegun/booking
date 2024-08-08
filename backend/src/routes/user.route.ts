@@ -1,5 +1,5 @@
 import express from "express";
-import { signIn, signOut, signUp, validateToken } from "../controllers/user.controller";
+import { fetchCurrentlyLoggedInUser, signIn, signOut, signUp, validateToken } from "../controllers/user.controller";
 import { check } from "express-validator";
 import { verifyToken } from "../middlewares/auth";
 
@@ -18,6 +18,8 @@ router.route("/sign-in")
         check("password", "Password must have a minimum of 6 characters").isLength({ min: 6 }),
         check("email", "Email is required").isEmail(),
       ],signIn);
+
+router.get("/me", verifyToken, fetchCurrentlyLoggedInUser)
 
 
 router.get('/validate-token', verifyToken, validateToken)

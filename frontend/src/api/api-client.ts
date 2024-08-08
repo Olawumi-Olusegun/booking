@@ -1,7 +1,8 @@
+import { BookingFormData } from "../components/forms/BookingForm/BookingForm";
 import { config } from "../constants";
 import { SignInFormData } from "../pages/Signin";
 import { SignUpFormData } from "../pages/Signup";
-import { HotelSearchResponse, HotelType } from "../types";
+import { HotelSearchResponse, HotelType, PaymentIntentResponse, UserType } from "../types";
 
 export type SearchParams = {
     destination?: string;
@@ -176,6 +177,78 @@ export const searchHotels = async (searchParams: SearchParams): Promise<HotelSea
     const response = await fetch(`${config.BASE_URL}/hotels/search?${queryParams}`, {
         method: "GET",
         credentials: "include",
+    });
+
+    const responseBody = await response.json();
+
+    if(!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody;
+}
+
+
+export const getHotelById = async (hotelId: string): Promise<HotelType> => {
+    
+    const response = await fetch(`${config.BASE_URL}/hotels/${hotelId}`, {
+        method: "GET",
+        credentials: "include",
+    });
+
+    const responseBody = await response.json();
+
+    if(!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody.hotel;
+}
+
+export const fetchCurrentlyLoggedInUser = async (): Promise<UserType> => {
+    
+    const response = await fetch(`${config.BASE_URL}/auth/me`, {
+        method: "GET",
+        credentials: "include",
+    });
+
+    const responseBody = await response.json();
+
+    if(!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody.user;
+}
+
+export const createPaymentIntent = async (hotelId: string, numberOfNights: number): Promise<PaymentIntentResponse>  => {
+    const response = await fetch(`${config.BASE_URL}/hotels/${hotelId}/bookings/payment-intent`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify({numberOfNights}),
+        headers: {
+            "Content-Type": "application/json",
+        }
+    });
+
+    const responseBody = await response.json();
+
+    if(!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody;
+}
+
+export const createBooking = async (formData: BookingFormData)  => {
+    
+    const response = await fetch(`${config.BASE_URL}/hotels/${formData.hotelId}/bookings`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(formData),
+        headers: {
+            "Content-Type": "application/json",
+        }
     });
 
     const responseBody = await response.json();

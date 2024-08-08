@@ -92,6 +92,23 @@ export const validateToken = async (req: Request, res: Response) => {
     return res.status(200).json({ userId: req.userId });
 }
 
+export const fetchCurrentlyLoggedInUser = async (req: Request, res: Response) => {
+    try {
+
+        const user = await UserModel.findById(req.userId).select("-password");
+
+        if(!user) {
+            return res.status(400).json({ message: "User not found"})
+        }
+
+        return res.status(200).json({user, message: "Success"});
+        
+    } catch (error) {
+        return res.status(500).json({ message: "Something went wrong"})
+    }
+}
+
+
 export const signOut = async (req: Request, res: Response) => {
     try {
 
