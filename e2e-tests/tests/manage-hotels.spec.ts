@@ -3,7 +3,7 @@ import path from "path"
 const UI_URL = "http://localhost:5173"
 
 
-test.beforeEach("It should allow user to signin", async ({page}) => {
+test.beforeEach(async ({page}) => {
 
   await page.goto(UI_URL);
 
