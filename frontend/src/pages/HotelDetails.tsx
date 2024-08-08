@@ -30,7 +30,7 @@ const HotelDetails = () => {
                             <Star  key={index} className="text-yellow-400 fill-yellow-400 "  /> 
                         ))
                     }
-                    <h1 className="text-3xl font-semibold">{hotel.name}</h1>
+                    <h1 className="text-3xl font-semibold text-neutral-600">{hotel.name}</h1>
                 </span>
             </div>
             <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4">

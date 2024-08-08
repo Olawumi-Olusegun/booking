@@ -8,17 +8,17 @@ const Header = () => {
 
   return (
     <header className="bg-blue-800 ">
-        <nav className="w-full p-5 md:container mx-auto flex items-center justify-between">
-            <Link to={"/"}  className="text-3xl text-white font-bold tracking-tight">
-                BookNow
+        <nav className="w-full p-5 lg:container mx-auto flex items-center justify-between">
+            <Link to={"/"}  className="text-lg md:text-2xl text-white font-bold tracking-tight">
+                Booknow
             </Link>
             <span className="flex space-x-3">
                 {
                     isLoggedIn
                     ? (
-                        <div className="flex items-center space-x-3">
-                            <Link to={"/my-hotels"} className=" text-white">My Bookings</Link>
-                            <Link to={"/add-hotel"} className=" text-white">My Hotels</Link>
+                        <div className="flex items-center space-x-2">
+                            <Link to={"/my-bookings"} className="hover:bg-slate-200/20 p-2 font-semibold text-sm rounded duration-300 text-white">My Bookings</Link>
+                            <Link to={"/my-hotels"} className="hover:bg-slate-200/20 p-2 font-semibold text-sm rounded duration-300 text-white">My Hotels</Link>
                             <SignOutButton />                            
                         </div>
                     )

@@ -7,6 +7,7 @@ import { dbConnection } from "./config/database";
 import userRoutes from "./routes/user.route";
 import myhotelRoutes from "./routes/my-hotels.route";
 import hotelsRoutes from "./routes/hotels.route";
+import myBookingRoutes from "./routes/my-bookings";
 
 const PORT = Number(process.env.PORT || 5150);
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "./../../frontend/dist")))
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/my-hotels", myhotelRoutes);
 app.use("/api/v1/hotels", hotelsRoutes);
+app.use("/api/v1/my-bookings", myBookingRoutes);
 
 
 app.get("*", (req:Request, res: Response) => {

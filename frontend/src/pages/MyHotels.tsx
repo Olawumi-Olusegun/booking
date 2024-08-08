@@ -22,9 +22,9 @@ const MyHotels = () => {
   return (
     <div className="space-y-5 my-12">
         <AppContainer>
-            <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold text-black/80">My Hotels</h1>
-                <Link to={"/add-hotel"} className="flex bg-blue-600 rounded-md text-white text-xl font-bold p-2 px-3 duration-300 hover:bg-blue-500 ">Add Hotel</Link>
+            <div className="flex items-center justify-between my-5">
+                <h1 className="text-2xl font-bold text-black/80">My Hotels</h1>
+                <Link to={"/add-hotel"} className="flex bg-blue-600 rounded-md text-white text-base font-semibold p-2 px-3 duration-300 hover:bg-blue-500 ">Add Hotel</Link>
             </div>
 
             <div className="grid grid-cols-1 gap-8">
@@ -56,7 +56,7 @@ const MyHotels = () => {
                                 </div>
                             </div>
                             <div className="flex justify-end">
-                                <Link to={`/edit-hotel/${hotel._id}`} className="flex bg-blue-600 rounded-md text-white text-xl font-bold p-2 px-3 duration-300 hover:bg-blue-500 ">View Details</Link>
+                                <Link to={`/edit-hotel/${hotel._id}`} className="flex bg-blue-600 rounded-md text-white text-base font-semibold p-2 px-3 duration-300 hover:bg-blue-500 ">View Details</Link>
                             </div>
                         </div>
                     ))

@@ -10,6 +10,7 @@ import EditHotel from "./pages/EditHotel"
 import Search from "./pages/Search"
 import HotelDetails from "./pages/HotelDetails"
 import Booking from "./pages/Booking"
+import MyBookings from "./pages/MyBookings"
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
 
           <Route  element={<AuthLayout />}>
             <Route path="/my-hotels" element={<MyHotels />} />
+            <Route path="/my-bookings" element={<MyBookings />} />
             <Route path="/add-hotel" element={<AddHotels />} />
             <Route path="/edit-hotel/:hotelId" element={<EditHotel />} />
             <Route path="/hotel/:hotelId/booking" element={<Booking />} />

@@ -34,9 +34,9 @@ const SignOutButton = ({className, children, ...props}: SignOutButtonProps) => {
         onClick={() => mutation.mutate()}
         type="button"
         disabled={mutation.isLoading}
-        className={cn("flex bg-white rounded items-center text-blue-600 px-3 py-2 font-bold hover:bg-gray-200 duration-300", className)} {...props}>
+        className={cn("flex bg-white rounded items-center text-blue-600 px-3 py-2 font-semibold  text-sm hover:bg-gray-200 duration-300", className)} {...props}>
             { mutation.isLoading && <Loader2 className="h-4 w-4 animate-spin" /> }
-            <span>Sign Out</span>
+            <span>Sign out</span>
         </button>
     </>
   )

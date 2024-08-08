@@ -8,7 +8,7 @@ const DetailsSection = () => {
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
-        <h1 className="text-3xl font-bold mb-3 col-span-2">Add Hotel</h1>
+        <h1 className="text-2xl font-bold mb-3 col-span-2">Add Hotel</h1>
         <div className="flex flex-col gap-1.5 col-span-2">
            <label htmlFor="name" className="text-gray-700 text-sm font-semibold">Name:</label>
                 <input 

@@ -37,8 +37,8 @@ const SearchBar = () => {
 
   return (
     <AppContainer>
-        <form onSubmit={handleSubmit} className="-mt-8 p-3 bg-yellow-500 rounded-md shadow-sm grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 items-center gap-2">
-            <div className="flex flex-row items-center flex-1 bg-white p-2 gap-1.5">
+        <form onSubmit={handleSubmit} className="-mt-14 translate-y-[14] p-3 bg-yellow-500 rounded-md shadow-sm grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 items-center gap-2">
+            <div className="flex flex-row items-center flex-1 bg-white rounded p-2 gap-1.5">
                 <Hotel size={25} />
                 <input 
                 value={destination} 
@@ -48,7 +48,7 @@ const SearchBar = () => {
                 />
             </div>
 
-            <div className="flex bg-white px-2 py-1 gap-2">
+            <div className="flex bg-white px-2 py-1 gap-2 rounded">
                 <label htmlFor="adultCount" className="flex items-center w-full">
                     Adults:
                     <input 
@@ -75,7 +75,7 @@ const SearchBar = () => {
                 
             </div>
            
-            <div className="flex bg-white px-2 py-1 gap-2">
+            <div className="flex bg-white px-2 rounded py-1 gap-2">
                 <DatePicker 
                 selected={checkIn} 
                 selectsStart
@@ -89,7 +89,7 @@ const SearchBar = () => {
                 wrapperClassName="min-w-full"
                 />
             </div>
-            <div className="flex bg-white px-2 py-1 gap-2">
+            <div className="flex bg-white px-2 rounded py-1 gap-2">
                 <DatePicker 
                 selected={checkOut} 
                 selectsStart
@@ -105,10 +105,10 @@ const SearchBar = () => {
             </div>
 
             <div className="flex gap-1">
-                <button className="w-2/3 bg-blue-600 duration-300 rounded-sm text-white h-full p-2 font-semibold text-xl hover:bg-blue-500">
+                <button className="w-2/3 bg-blue-600 duration-300 rounded-md text-white h-full p-2 font-semibold  text-base hover:bg-blue-500">
                     Search
                 </button>
-                <button onClick={handleClearSearchForm} type="button" className="w-1/3 bg-red-600 duration-300 rounded-sm text-white h-full p-2 font-semibold text-xl hover:bg-red-500">
+                <button onClick={handleClearSearchForm} type="button" className="w-1/3 bg-red-600 duration-300 rounded-md text-white h-full p-2 font-semibold text-base hover:bg-red-500">
                     Clear
                 </button>
             </div>

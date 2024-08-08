@@ -259,3 +259,19 @@ export const createBooking = async (formData: BookingFormData)  => {
 
     return responseBody;
 }
+
+export const fetchMyBookings = async (): Promise<HotelType[]>  => {
+    
+    const response = await fetch(`${config.BASE_URL}/my-bookings`, {
+        method: "GET",
+        credentials: "include",
+    });
+
+    const responseBody = await response.json();
+
+    if(!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody.results;
+}
