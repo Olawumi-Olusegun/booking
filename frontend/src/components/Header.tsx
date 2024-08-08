@@ -24,8 +24,8 @@ const Header = () => {
                     )
                     : (
                         <>
-                            <Link to={"/sign-in"} className="flex bg-white rounded items-center text-blue-600 px-6 py-2 font-bold hover:bg-gray-200 duration-300">Sign In</Link>
-                            <Link to={"/sign-up"} className=" focus-visible:ring-blue-600 ring-2 ring-white px-6 py-2 rounded font-bold text-white">Sign Up</Link>
+                            <Link to={"/sign-in"} className="flex bg-white rounded items-center text-sm text-blue-600 p-2 px-3 font-semibold hover:bg-gray-200 duration-300">Sign in</Link>
+                            <Link to={"/sign-up"} className=" focus-visible:ring-blue-600 text-sm ring-1 bg-blue-100/20 hover:bg-blue-100/10 duration-300 ring-blue-800 p-2 px-3 rounded font-semibold text-white">Sign up</Link>
                         </>
                     )
                 }

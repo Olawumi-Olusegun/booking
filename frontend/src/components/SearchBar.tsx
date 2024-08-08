@@ -49,7 +49,7 @@ const SearchBar = () => {
             </div>
 
             <div className="flex bg-white px-2 py-1 gap-2 rounded">
-                <label htmlFor="adultCount" className="flex items-center w-full">
+                <label htmlFor="adultCount" className="flex items-center w-full text-sm">
                     Adults:
                     <input 
                     type="number"
@@ -61,7 +61,7 @@ const SearchBar = () => {
                     />
                 </label>
 
-                <label htmlFor="adultCount" className="flex items-center w-full">
+                <label htmlFor="adultCount" className="flex items-center w-full text-sm">
                     Children:
                     <input 
                     type="number"

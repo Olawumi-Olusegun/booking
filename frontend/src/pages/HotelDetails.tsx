@@ -27,10 +27,10 @@ const HotelDetails = () => {
                 <span className="flex items-center gap-1.5">
                     { 
                         Array.from({ length: hotel?.starRating }).map((_, index) => (
-                            <Star  key={index} className="text-yellow-400 fill-yellow-400 "  /> 
+                            <Star  key={index} className="text-yellow-400 fill-yellow-400"  /> 
                         ))
                     }
-                    <h1 className="text-3xl font-semibold text-neutral-600">{hotel.name}</h1>
+                    <h1 className="text-2xl tracking-tight font-semibold text-neutral-600">{hotel.name}</h1>
                 </span>
             </div>
             <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -46,6 +46,7 @@ const HotelDetails = () => {
                     ))
                 }
             </div>
+            
             <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-2">
                 {
                     hotel.facilities.map((facility, index) => (

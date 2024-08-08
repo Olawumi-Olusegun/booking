@@ -129,7 +129,7 @@ const Signup = () => {
             <div className="flex items-center justify-between col-span-2 ">
                 <Link to={"/sign-in"} className="text-blue-700 hover:underline duration-300">Already have an account?</Link>
                
-               <button type="submit" disabled={mutation.isLoading} className="flex items-center gap-1.5 px-6 py-2 bg-blue-700 text-white hover:bg-blue-600 duration-300 rounded-md  ">
+               <button type="submit" disabled={mutation.isLoading} className="flex items-center gap-1.5 px-3 py-2 bg-blue-700 text-white hover:bg-blue-600 duration-300 rounded-md  ">
                 {mutation.isLoading && <Loader2 className="w-4 h-4 animate-spin" />} 
                     <span>SignUp</span>
                 </button>

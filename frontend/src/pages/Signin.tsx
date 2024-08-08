@@ -27,9 +27,10 @@ const Signin = () => {
             await queryClient.invalidateQueries("validateToken");
             showToast({ message: "Signin successful", type: "success" });
             reset();
-            navigate(location.state.from.pathname || "/");
+            navigate(location.state?.from.pathname || "/");
         },
         onError: (error: Error) => {
+            console.log(error)
             showToast({ message: error.message, type: "error" });
         }
     });
@@ -81,7 +82,7 @@ const Signin = () => {
             <div className="flex items-center justify-between col-span-2 ">
                 <Link to={"/sign-up"} className="text-blue-700 hover:underline duration-300">Don{"'"}t have an account?</Link>
                
-               <button type="submit" disabled={mutation.isLoading} className="flex items-center gap-1.5 px-6 py-2 bg-blue-700 text-white hover:bg-blue-600 duration-300 rounded-md  ">
+               <button type="submit" disabled={mutation.isLoading} className="flex items-center gap-1.5 px-3 py-2 bg-blue-700 text-white hover:bg-blue-600 duration-300 rounded-md  ">
                 {mutation.isLoading && <Loader2 className="w-4 h-4 animate-spin" />} 
                     <span>SignIn</span>
                 </button>
